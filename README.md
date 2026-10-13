@@ -54,7 +54,7 @@ ITE183_Lab2_Websocket/
 
 ## Documentation
 
-The screenshots below should be taken from my own computer after running the application. I will replace each placeholder with the actual result before submitting this report.
+The screenshots below should be taken from my own computer after running the application. 
 
 1. `01-bonezegei-version.png` — terminal shows `bonezegei -v` and v1.3.3.
    <img width="962" height="315" alt="01-bonezegei-version" src="https://github.com/user-attachments/assets/422585c2-4c67-42ea-bfdf-891754925e13" />
