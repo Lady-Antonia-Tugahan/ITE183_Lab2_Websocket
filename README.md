@@ -54,7 +54,32 @@ ITE183_Lab2_Websocket/
 
 ## Documentation
 
-Follow `documentation/SCREENSHOT_CHECKLIST.md` for the required screenshots. Add genuine test screenshots to `documentation/` before submission.
+The screenshots below should be taken from my own computer after running the application. I will replace each placeholder with the actual result before submitting this report.
+
+1. `01-bonezegei-version.png` — terminal shows `bonezegei -v` and v1.3.3.
+   <img width="962" height="315" alt="01-bonezegei-version" src="https://github.com/user-attachments/assets/422585c2-4c67-42ea-bfdf-891754925e13" />
+
+   Observation: The version verification shows whether the required version of Bonezegei is installed. Version 1.3.3 is needed for this activity because the WebSocket server uses its networking features.
+
+2. `02-bzg-install.png` — terminal shows successful `bzg install`.
+   <img width="558" height="117" alt="02-bzg-install" src="https://github.com/user-attachments/assets/73ab6882-453a-44d4-bc3b-efc87fc09efd" />
+   
+   Observation: The package installation prepares the project to use the HTTP server library. This library allows the application to handle HTTP requests and WebSocket connections.
+
+3. `03-server-running.png` — terminal running `bzg run` with connected client logs.
+   <img width="690" height="427" alt="03-server-running" src="https://github.com/user-attachments/assets/5aa37fe7-1e0e-417d-8841-cee9e4a05662" />
+
+   Observation: The terminal logs help show what is happening on the server. Each connected client is assigned an ID, which allows the server to identify the connection. When a client sends a message, the server receives it through the onData event handler and broadcasts it to connected clients using server.sendAll(). In addition, the terminal logs incoming HTTP GET requests for /, /favicon.ico, and /unknown.
+
+5. `04-multi-client-chat.png` — **two separate browser windows visible together**, showing the same message broadcast.
+   <img width="1710" height="1112" alt="04-multi-client-chat" src="https://github.com/user-attachments/assets/2013306b-5692-452e-9af7-b646bc30507f" />
+
+   Observation: The chat interface demonstrates real-time communication between multiple clients. Both browser windows use the same server, allowing messages to be shared immediately. The WebSocket connection remains active while the clients are connected, so users do not need to reload the page to receive new messages.
+
+6. `05-custom-404.png` — visiting `/unknown` displays the custom 404 page.
+   <img width="934" height="1071" alt="05-custom-404" src="https://github.com/user-attachments/assets/8ad7a2d0-83fb-41ee-9ab9-2064277080ea" />
+   
+   Observation: The server checks the requested path through the HTTP GET handler. When the path is /, it displays index.html. For other paths, it serves 404.html, which informs the user that the requested page could not be found.
 
 ## Troubleshooting
 
