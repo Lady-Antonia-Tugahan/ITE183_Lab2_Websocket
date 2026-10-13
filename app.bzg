@@ -1,0 +1,35 @@
+// ITE183 Laboratory 2 - WebSocket Server
+// The http dependency is installed into lib/ by `bzg install`.
+include("lib/http.bzg");
+
+var server = http(8000);
+
+// Serve the chat page; show the custom 404 page for unknown paths.
+server.get = function (path, data) {
+    print("HTTP GET: " + path);
+    if (path == "/") {
+        server.sendFile("public/index.html");
+    } else {
+        server.sendFile("public/404.html");
+    }
+};
+
+// A new browser establishes a WebSocket connection.
+server.onConnect = function (clientId) {
+    print("WebSocket connected! Client ID: " + clientId);
+    server.send(clientId, "Welcome to the WebSocket server!");
+};
+
+// Broadcast each incoming message to all connected browser clients.
+server.onData = function (message, clientId) {
+    print("Received from Client " + clientId + ": " + message);
+    server.sendAll("User " + clientId + " says: " + message);
+};
+
+// Log when a browser disconnects or closes the page.
+server.onDisconnect = function (clientId) {
+    print("WebSocket disconnected! Client ID: " + clientId);
+};
+
+print("Starting WebSocket chat on http://localhost:8000/");
+server.run();
